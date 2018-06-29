@@ -11,7 +11,7 @@
    - Build 
       - Add Invoke Gradle Script
       - Gradle Version (Use selection created above)
-      - Task: build run
+      - Task: `build run`
       - Root Build Script: `${workspace}/gradle/hello-world/`
    - Post-build action:
       - Files to Archive: `gradle/hello-world/build/libs/*.jar`
