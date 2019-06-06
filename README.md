@@ -7,9 +7,9 @@
 1. Get the password: `docker logs jenkins`
 1. Finish the setup.
 
-## First Free Style Project
+## First Freestyle Project
 
-1. Create the Free Style project:
+1. Create the Freestyle project:
    - GitHub Project: checked
    - Project url: `https://github.com/JetBrains/kotlin-examples/`
    - SCM Git:
@@ -27,13 +27,13 @@
 
 Extra Credit: Can you create this job as a pipeline?
 
-## Free Style Project with Docker
+## Freestyle Project with Docker
 
 1. Install the `docker-build-step` plugin.
 1. Setup the plugin to use the Host's Docker instance:
     - System Config -> Docker Builder
  	     - Docker URL: `unix:///var/run/docker.sock`
-1. Create the Free Style project:
+1. Create the Freestyle project:
 1. Add a build step (`Execute shell`):
    - Execute command:
       - Script:
