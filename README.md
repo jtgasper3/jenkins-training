@@ -66,8 +66,8 @@ Extra Credit: Can you create this job as a pipeline?
 Execute the following commands, either using `docker exec -it jenkins bash` or create a one-time use Freestyle project with a Script task:
 
 ```
-apt-get update
-apt-get install \
+apt-get update -y
+apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -78,8 +78,8 @@ add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/debian \
    $(lsb_release -cs) \
    stable"
-apt-get update
-apt-get install docker-ce-cli
+apt-get update -y
+apt-get install -y docker-ce-cli
 ```
 
 ## Use a Pipeline Project to use Docker to Execute Tasks
