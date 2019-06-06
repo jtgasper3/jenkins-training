@@ -54,7 +54,8 @@ Extra Credit: Can you create this job as a pipeline?
 1. Check the console log.
    <details>
    <summary>Get the answer</summary>
-   Jenkins created the Dockerfile and has started a Docker build using that file that installs <code>wget</code>.
+   
+   Jenkins created the Dockerfile and has started a Docker build using that file that installs `wget`.
    </details>
 
 
@@ -107,6 +108,6 @@ apt-get install docker-ce-cli
    <details>
    <summary>Get the answer</summary>
    
-   Jenkins has started a Docker container using the <code>node</code> image. It mounted the WORKSPACE directory into the container and is executing commands (`npm install`) inside the container.
+   Jenkins has started a Docker container using the `node` image. It mounted the WORKSPACE directory into the container and is executing commands (`npm install`) inside the container.
    </details>
 
