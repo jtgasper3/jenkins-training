@@ -51,7 +51,12 @@ Extra Credit: Can you create this job as a pipeline?
       - Build context folder: `$WORKSPACE`
       - Tag of the resulting docker image: `test/test:$BUILD_NUMBER`
 1. Save and run the job.
-1. Check the Console log.
+1. Check the console log.
+   <details>
+   <summary>Get the answer</summary>
+   Jenkins created the Dockerfile and has started a Docker build using that file that installs <code>wget</code>.
+   </details>
+
 
 ## Install Docker CLI into the Jenkins Container
 
@@ -98,6 +103,9 @@ apt-get install docker-ce-cli
    }
    ```
 1. Save and run the job.
-1. Check the Console log, what happened?
-
+1. Check the console log, what happened?
+   <details>
+   <summary>Get the answer</summary>
+   Jenkins has started a Docker container using the <code>node</code> image. It mounted the WORKSPACE directory into the container and is executing commands (<code>npm install</code>) inside the container.
+   </details>
 
