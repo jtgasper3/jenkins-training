@@ -106,6 +106,7 @@ apt-get install docker-ce-cli
 1. Check the console log, what happened?
    <details>
    <summary>Get the answer</summary>
-   Jenkins has started a Docker container using the <code>node</code> image. It mounted the WORKSPACE directory into the container and is executing commands (<code>npm install</code>) inside the container.
+   
+   Jenkins has started a Docker container using the <code>node</code> image. It mounted the WORKSPACE directory into the container and is executing commands (`npm install`) inside the container.
    </details>
 
