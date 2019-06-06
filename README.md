@@ -52,3 +52,52 @@ Extra Credit: Can you create this job as a pipeline?
       - Tag of the resulting docker image: `test/test:$BUILD_NUMBER`
 1. Save and run the job.
 1. Check the Console log.
+
+## Install Docker CLI into the Jenkins Container
+
+> Note: For pipeline tasks run on the Jenkins master, the Docker CLI needs to be installed.
+
+Execute the following commands, either using `docker exec -it jenkins bash` or create a one-time use Freestyle project with a Script task:
+
+```
+apt-get update
+apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+apt-get install docker-ce-cli
+```
+
+## Use a Pipeline Project to use Docker to Execute Tasks
+
+1. Create a pipeline project.
+1. Set the pipeline script:
+   ```groovy
+      pipeline {
+       agent {
+           docker {
+               image 'node:6-alpine' 
+               args '-p 3000:3000' 
+           }
+       }
+       stages {
+           stage('Build') { 
+               steps {
+                   sh 'npm install' 
+               }
+           }
+       }
+   }
+   ```
+1. Save and run the job.
+1. Check the Console log, what happened?
+
+
