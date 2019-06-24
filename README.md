@@ -25,9 +25,32 @@
 1. Save and run the job.
 1. Is there a .jar file save with the job?
 
-Extra Credit: Can you create this job as a pipeline?
+## Install Docker CLI into the Jenkins Container
+
+> Note: For pipeline tasks run on the Jenkins master, the Docker CLI needs to be installed.
+
+Execute the following commands, either using `docker exec -it jenkins bash` or create a one-time use Freestyle project with a Script task:
+
+```
+apt-get update -y
+apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/debian \
+   $(lsb_release -cs) \
+   stable"
+apt-get update -y
+apt-get install -y docker-ce-cli
+```
 
 ## Freestyle Project with Docker
+
+Let's make sure that Docker is working with our Jenkins install.
 
 1. Install the `docker-build-step` plugin.
 1. Setup the plugin to use the Host's Docker instance:
@@ -55,34 +78,12 @@ Extra Credit: Can you create this job as a pipeline?
    <details>
    <summary>Get the answer</summary>
    
-   Jenkins created the Dockerfile and has started a Docker build using that file that installs `wget`.
+   Jenkins created the Dockerfile and has started a Docker build using the Dockerfile which installs `wget`.
    </details>
 
+This demonstrates that our integration with the Docker CLI and the Docker engine are working. Normally we would use a Dockerfile store in a source code repo versus creating it with Jenkins.
 
-## Install Docker CLI into the Jenkins Container
-
-> Note: For pipeline tasks run on the Jenkins master, the Docker CLI needs to be installed.
-
-Execute the following commands, either using `docker exec -it jenkins bash` or create a one-time use Freestyle project with a Script task:
-
-```
-apt-get update -y
-apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg2 \
-    software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
-apt-get update -y
-apt-get install -y docker-ce-cli
-```
-
-## Use a Pipeline Project to use Docker to Execute Tasks
+## Use a Pipeline Job to build inside a Docker container
 
 1. Create a pipeline project.
 1. Set the pipeline script:
