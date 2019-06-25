@@ -218,6 +218,10 @@ This is a good start. What improvements could we make it make the process better
    - The application and image builds do not occur with Jenkins. That could be changed... If only the project had a Jenkinfile...
    </details>
 
-## Bored? Done early?**
+## Bored? Done early?
 
-Fork the Pets app project and try to improve it.
+Ideas:
+
+    - Fork the Pets app project and try to improve it.
+    - Review the list of plugins. Find anything interesting?
+
