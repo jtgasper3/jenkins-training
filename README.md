@@ -1,17 +1,16 @@
 # jenkins-training
 
-Note: This lab should work with Docker on Linux, OS X, and Play With Docker, but will have some issues with Windows.
+Note: This lab should work with Docker on Linux, OS X, and Windows (with some additional steps). Jenkins does not work (well) with Play With Docker.
 
 ## Starting a Jenkins instance
 > Note: Running the Jenkins container running as the `root` user and linking to the host Docker environment (Docker in Docker) comes with inherent risk. There are other models for allowing Jenkins to manage Docker, but this method is done for expedience for the class.
 
-1. Start Jenkins: `docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/local/bin/docker -u root --name jenkins jenkins/jenkins:lts`
+1. Start Jenkins:
+    - On Linux and OS X: `docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/local/bin/docker -u root --name jenkins jenkins/jenkins:lts`
+- On Windows: `docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -u root --name jenkins jenkins/jenkins:lts`
+
 1. Get the password: `docker logs jenkins`
 1. Finish the setup.
-
-On occasion there are issues starting a Jenkins instance, as the installer cannot reach a needed resource, if the installation gets stuck installing plugins, use the following command to use an image that bypasses the install process: `docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/local/bin/docker -u root --name jenkins jtgasper3/devops-in-a-box-jenkins`
-
-> Note: this install maybe dated and the upgrade process can and should be executed within the Jenkins configuration section.
 
 ## First Freestyle Project
 
