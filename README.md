@@ -225,3 +225,14 @@ Ideas:
     - Fork the Pets app project and try to improve it.
     - Review the list of plugins. Find anything interesting?
 
+## Resetting the environment
+
+Note: The following set of commands are destructive. Run with care!
+
+On the Docker host, run:
+
+```sh
+docker swarm leave --force
+docker rm -f jenkins
+docker image rm jenkins/jenkins:lts
+```
